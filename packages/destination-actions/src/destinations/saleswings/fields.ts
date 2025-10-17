@@ -68,6 +68,29 @@ export const userAgent: InputField = {
   }
 }
 
+export const title: InputField = {
+  label: 'Title',
+  description: 'Page title associated with the event.',
+  type: 'string',
+  default: {
+    '@if': {
+      exists: { '@path': '$.properties.title' },
+      then: { '@path': '$.properties.title' },
+      else: { '@path': '$.context.page.title' }
+    }
+  }
+}
+
+export const messageID: InputField = {
+  label: 'Message ID',
+  description:
+    'Unique identifier of the message associated with the event. Used to ensure the same event is not processed multiple times.',
+  type: 'string',
+  default: {
+    '@path': '$.messageId'
+  }
+}
+
 export const timestamp: InputField = {
   label: 'Event Timestamp',
   description: 'When the event was sent.',
