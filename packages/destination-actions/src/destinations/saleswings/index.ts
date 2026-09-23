@@ -27,6 +27,7 @@ const destination: DestinationDefinition<Settings> = {
         type: 'string',
         choices: [
           { value: 'helium', label: 'Helium (live environment)' },
+          { value: 'argon', label: 'Argon (staging environment)' },
           { value: 'ozone', label: 'Ozone (test environment)' }
         ],
         required: true,

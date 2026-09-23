@@ -15,8 +15,7 @@ describe('Saleswings', () => {
       ).resolves.not.toThrowError()
     })
 
-    it('should support non-default environment', async () => {
-      const otherEnv = 'ozone'
+    it.each(['argon', 'ozone'])('should support non-default environment %s', async (otherEnv) => {
       nock(getAccountUrl(otherEnv)).get('').matchHeader('authorization', 'Bearer myApiKey').reply(200, {})
       await expect(
         testDestination.testAuthentication({ apiKey: 'myApiKey', environment: otherEnv })
